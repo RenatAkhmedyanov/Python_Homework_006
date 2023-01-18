@@ -7,6 +7,7 @@
 
 
 import os
+import time
 
 def cls():
     os.system('cls')
@@ -39,23 +40,24 @@ def writeFile (file_name):
             choice = input('\nНажмите Enter чтобы добавить новый контакт\nВведите 0 для выхода\n')
             if choice == '0': 
                 return 
-
+        
 def readFile (file_name):
     cls()
     print('==============================\n'
           '|      Список контактов      |\n'
           '==============================')
     while True:
-        with open(file_name, 'r', encoding = 'utf-8') as data:
-            line = data.readlines()
-            
-        for i in line:
-            i = line.index(i)
-            print(f'{i+1}. {line[i].strip()}')
-        choice = input('\nНажмите 0 для выхода\n')
-        if choice == '0': 
-            return
-
+        if os.path.exists(fileName):
+            with open(file_name, 'r', encoding = 'utf-8') as data:
+                line = data.readlines()
+                
+            for i in line:
+                i = line.index(i)
+                print(f'{i+1}. {line[i].strip()}')
+            choice = input('\nНажмите 0 для выхода\n')
+            if choice == '0': 
+                return
+    
 def findContactByKeyWord (file_name):
     cls()
     print('==============================\n'
@@ -161,8 +163,14 @@ def Phonebook():
         user_choice = int(input('Выберете необходимый пункт меню: '))
                 
         if user_choice == 1:
+            if os.path.exists(fileName):
             #Показать все записи
-            readFile(fileName)
+                readFile(fileName)
+            else: 
+                print('Контакты отсутствуют. Создайте хотя бы один контакт.')
+                time.sleep(3)  
+    
+               
             
 
         if user_choice == 2: 
@@ -189,4 +197,5 @@ def Phonebook():
             print('Выход из программы. До свидания!')
             break    
 
-Phonebook()            
+
+Phonebook() 
