@@ -47,16 +47,15 @@ def readFile (file_name):
           '|      Список контактов      |\n'
           '==============================')
     while True:
-        if os.path.exists(fileName):
-            with open(file_name, 'r', encoding = 'utf-8') as data:
-                line = data.readlines()
-                
-            for i in line:
-                i = line.index(i)
-                print(f'{i+1}. {line[i].strip()}')
-            choice = input('\nНажмите 0 для выхода\n')
-            if choice == '0': 
-                return
+        with open(file_name, 'r', encoding = 'utf-8') as data:
+            line = data.readlines()
+            
+        for i in line:
+            i = line.index(i)
+            print(f'{i+1}. {line[i].strip()}')
+        choice = input('\nНажмите 0 для выхода\n')
+        if choice == '0': 
+            return
     
 def findContactByKeyWord (file_name):
     cls()
@@ -167,7 +166,7 @@ def Phonebook():
             #Показать все записи
                 readFile(fileName)
             else: 
-                print('Контакты отсутствуют. Создайте хотя бы один контакт.')
+                print('Контакты отсутствуют. Создайте хотя бы один контакт. Выход в главное меню через 3 секунды...')
                 time.sleep(3)  
     
                
