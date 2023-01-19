@@ -125,17 +125,9 @@ def ReplaceData(file_name):
                         '0 - для выхода\n'))
         
         
-        if answer == 1:
+        if (answer == 1) or (answer == 2) or (answer == 3) or (answer == 4):
             rewrite_data(result, answer, line, contact_id, fileName)
                     
-        if answer == 2:
-            rewrite_data(result, answer, line, contact_id, fileName)
-        
-        if answer == 3:
-            rewrite_data(result, answer, line, contact_id, fileName)
-
-        if answer == 4:
-            rewrite_data(result, answer, line, contact_id, fileName)
         choice = input('\nНажмите Enter, чтобы продолжить изменение контактов\nВведите 0 для выхода\n')
         if choice == '0': 
             return
@@ -198,3 +190,4 @@ def Phonebook():
 
 
 Phonebook() 
+
